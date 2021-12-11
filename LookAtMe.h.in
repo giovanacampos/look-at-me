@@ -1,0 +1,2 @@
+#define LookAtMe_VERSION_MAJOR @LookAtMe_VERSION_MAJOR@
+#define LookAtMe_VERSION_MINOR @LookAtMe_VERSION_MINOR@
