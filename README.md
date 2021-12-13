@@ -21,3 +21,13 @@ Run the command on terminal to setup, download, build, and install OpenCV.
 * `cd ..` exit the build folder.
 * `./bin/look-at-me` displays the camera input and outline faces.
   * `./bin-look-at-me -v <arg>` will open a video file path provided for the argument and outline faces.
+
+## Docker
+
+Before you can run docker you need to get an `xauth` token by running `xauth list`.  Once you have the hash
+listed copy and replace it for the one `a076adcfef9b24b6664d78b50ea99a4f` in the `Dockerfile`.
+
+To run the docker image follow these commands:
+
+* `docker build -t look-at-me:dev .`
+* `docker run --net=host -e DISPLAY -v /tmp/.X11-unix look-at-me:dev`
