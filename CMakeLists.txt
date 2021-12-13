@@ -9,8 +9,10 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_HOME_DIRECTORY}/bin)
 
 set(
     OPENCV_LIBS
+    -lopencv_calib3d
     -lopencv_core
     -lopencv_highgui
+    -lopencv_imgcodecs
     -lopencv_imgproc
     -lopencv_objdetect
     -lopencv_videoio
@@ -18,10 +20,16 @@ set(
 
 configure_file(LookAtMe.h.in LookAtMe.h)
 
+include(FetchContent)
+FetchContent_Declare(dlib
+    GIT_REPOSITORY https://github.com/davisking/dlib.git
+    GIT_TAG        v19.22
+)
+FetchContent_MakeAvailable(dlib)
+
 add_executable(
     look-at-me
     src/main.cpp
-    src/errors.hpp
     )
 
 target_include_directories(
@@ -33,5 +41,6 @@ target_include_directories(
 
 target_link_libraries(
     look-at-me
+    dlib::dlib
     ${OPENCV_LIBS}
     )
